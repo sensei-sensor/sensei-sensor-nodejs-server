@@ -1,5 +1,6 @@
 # Sensei Sensor Server
-Sensei Sensorのサーバー
+
+Sensei Sensor のサーバー
 
 ## Setup
 
@@ -9,55 +10,77 @@ Sensei Sensorのサーバー
 
 - VMware Workstation 16 Player
 
-	- Ubuntu Server 20.04.1 LTS
+  - Ubuntu 20.04.1 LTS
 
-	- CPU:  2Core
+  - CPU: 2 コア
 
-	- MEM:  4GB
+  - メモリー: 4GB
 
-	- Disk: 20GB
+  - ハードディスク: 20GB
 
 - Node.js 14.15.1
 
-- yarn 1.22.5
+## VMへUbuntuのインストール
 
+[参考](https://www.gsenjyounoai.com/2020/04/vmware-ubuntu-2004-lts.html)
 
+1. [Ubuntu の公式サイト](https://jp.ubuntu.com/download)から iso をダウンロードする
 
-### インストール
+1. VMware で 2 コア、4GB、ハードディスク 20GB の仮想マシンを作る
 
-1. [Ubuntuの公式サイト](https://ubuntu.com/download/server)からisoをダウンロードする
+1. iso はダウンロードしたものを選択
 
-1. VMwareで 2コア、4GB、ディスク20GB の仮想マシンを作る
+1. 仮想マシンを起動する
 
-1. isoはダウンロードしたものを選択
+1. Ubuntu の初期設定で日本語を選択
 
-1. 仮想マシンを起動して、次へを押していく
+1. キーボードレイアウトは日本語で
 
-	1. ネットワークはとりあえずDHCPで大丈夫
+1. 最小のインストールを選択
 
-### 初期設定
+   1. アップデートの他にグラフィックスと Wi-Fi…にもチェックを入れる
 
-1. とりあえずアップデート
+1. ディスクを削除して Ubuntu をインストールを選択
+
+1. どこに住んでいますか？ -> Tokyo
+
+1. あなたの情報
+
+   - あなたの名前: フルネーム
+
+   - コンピュータの名前: vm
+
+   - ユーザー名: 自由
+
+   - パスワード: 自由
+
+## 初期設定
+
+1. プロキシの設定
+
+- ブラウザを使う用
+
+  設定 →
+
+- apt とかのプロキシ
+
+  [Proxy-Switcher-for-Ubuntu](https://github.com/nemuki-nok/Proxy-Switcher-for-Ubuntu)を使う
+
+2. アップデート
 
 ```
 $ sudo apt update
 $ sudo apt upgrade
 ```
 
-2. Node.jsのインストール
+3. Node.js のインストール
 
-[参考](https://github.com/nodesource/distributions/blob/master/README.md#installation-instructions)
-
-```
-$ sudo apt-get install gcc g++ make
-$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-$ sudo apt-get install -y nodejs
-```
-
-3. yarnのインストール
+[参考サイト](https://qiita.com/seibe/items/36cef7df85fe2cefa3ea)
 
 ```
-$ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-$ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-$ sudo apt-get update && sudo apt-get install yarn
+$ sudo apt install -y nodejs npm
+$ sudo npm install n -g
+$ sudo n stable
+$ sudo apt purge -y nodejs npm
+$ exec $SHELL -l
 ```
