@@ -1,0 +1,19 @@
+{
+  "name": "sensei-sensor-server",
+  "version": "1.0.0",
+  "description": "Sensei Sensor のサーバー",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sensei-sensor/sensei-sensor-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sensei-sensor/sensei-sensor-server/issues"
+  },
+  "homepage": "https://github.com/sensei-sensor/sensei-sensor-server#readme"
+}
