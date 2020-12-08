@@ -1,0 +1,7 @@
+# VSCodeのRest Clientのリクエスト用
+
+http://localhost:3000/samples/
+
+### ### で区切れば複数行けるらしい
+
+http://localhost:3000/samples/hello
