@@ -1,37 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const productionConfig = require('./production-config');
+const productionConfig = require('../production-config');
 
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-	host: productionConfig.db,host,
+	host: productionConfig.db.host,
 	user: productionConfig.db.user,
 	password: productionConfig.db.password,
 	connectionLimit: 5
 });
-pool.getConnection()
-	.then(conn => {
-
-		conn.query("SELECT 1 as val")
-			.then((rows) => {
-				console.log(rows); //[ {val: 1}, meta: ... ]
-				//Table must have been created before 
-				// " CREATE TABLE myTable (id int, val varchar(255)) "
-				return conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
-			})
-			.then((res) => {
-				console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-				conn.end();
-			})
-			.catch(err => {
-				//handle error
-				console.log(err);
-				conn.end();
-			})
-
-	}).catch(err => {
-		//not connected
-	});
 
 /* サンプルAPI① 
  * http://localhost:3000/samples にGETメソッドのリクエストを投げると、
@@ -68,7 +45,29 @@ router.get('/hello/:place', (req, res, next) => {
  * JSON形式で文字列を返す。
  */
 router.post('/', (req, res, next) => {
-	let param = { "値": "POSTメソッドのリクエストを受け付けました", "bodyの値": req.body.card };
+	let param = { "値": "POSTメソッドのリクエストを受け付けました", "bodyの値": req.body.name };
+	pool.getConnection()
+		.then(conn => {
+			conn.query("SELECT 1 as val")
+			.then((rows) => {
+				console.log(rows); //[ {val: 1}, meta: ... ]
+				//Table must have been created before 
+				// " CREATE TABLE myTable (id int, val varchar(255)) "
+				return conn.query("INSERT INTO test_database.test_table(name, address) value (?, ?)", [req.body.name, req.body.address]);
+			})
+			.then((res) => {
+				console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
+				conn.end();
+			})
+			.catch(err => {
+				//handle error
+				console.log(err);
+				conn.end();
+			})
+		}).catch(err => {
+			//not connected
+			console.log(err);
+		});
 	res.header('Content-Type', 'application/json; charset=utf-8')
 	res.send(param);
 });
