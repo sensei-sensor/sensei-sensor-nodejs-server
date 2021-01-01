@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
 					userId = rows[0].user_id;
 					connection.query('INSERT INTO transactions (user_id, room_id) value (?, ?)', [userId, req.body.room_id])
 						.then((rows) => {
-							console.log(rows);
+							console.log(rows)
 						})
 						.then((res) => {
 							connection.end();

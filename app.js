@@ -10,7 +10,7 @@ const indexRouter = require('./routes/index');    // requireで、使用する�
 const usersRouter = require('./routes/users');
 const samples = require('./routes/samples');
 const sensors = require('./routes/sensors');
-const website = require('routes/website');
+const website = require('./routes/website');
 
 const app = express();                            // Expressのサーバ生成処理を app にセット。
 
