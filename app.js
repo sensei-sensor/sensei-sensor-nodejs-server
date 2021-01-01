@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');    // requireで、使用する�
 const usersRouter = require('./routes/users');
 const samples = require('./routes/samples');
 const sensors = require('./routes/sensors');
+const website = require('routes/website');
 
 const app = express();                            // Expressのサーバ生成処理を app にセット。
 
@@ -27,6 +28,7 @@ app.use('/', indexRouter);                        // ルーティング（後述
 app.use('/users', usersRouter);
 app.use('/samples', samples);
 app.use('/sensors', sensors);
+app.use('/website', website);
 
 // catch 404 and forward to error handler         // ルーティングで該当先が無かったら、404画面を表示するミドルウェア。
 app.use((req, res, next) => {
