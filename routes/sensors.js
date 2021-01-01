@@ -23,17 +23,14 @@ router.post('/', (req, res, next) => {
 							console.log(rows);
 						})
 						.then((res) => {
-							console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
 							connection.end();
 						})
 						.catch(err => {
 							//handle error
 							console.log(err);
-							connection.end();
 						})
 				})
 				.then((res) => {
-					console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
 					connection.end();
 				})
 				.catch(err => {
@@ -46,7 +43,6 @@ router.post('/', (req, res, next) => {
 			console.log(err);
 		});
 	res.header('Content-Type', 'application/json; charset=utf-8');
-	res.send(param);
 });
 
 module.exports = router;
