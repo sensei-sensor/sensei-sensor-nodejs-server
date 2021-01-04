@@ -68,7 +68,7 @@ Sensei Sensor のサーバー
 
 2. アップデート
 
-```
+```shell
 $ sudo apt update
 $ sudo apt upgrade
 ```
@@ -77,10 +77,17 @@ $ sudo apt upgrade
 
 [参考サイト](https://qiita.com/seibe/items/36cef7df85fe2cefa3ea)
 
-```
+```shell
 $ sudo apt install -y nodejs npm
 $ sudo npm install n -g
 $ sudo n stable
 $ sudo apt purge -y nodejs npm
 $ exec $SHELL -l
+```
+
+4. MariaDB のインストール
+
+```shell
+$ curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
+$ sudo apt-get install mariadb-server
 ```
