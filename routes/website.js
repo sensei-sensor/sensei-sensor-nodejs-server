@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 					param = JSON.stringify(rows);
 					res.header('Content-Type', 'application/json; charset=utf-8');
 					res.send(param);
+					connection.end();
 				});
 		});
 });
