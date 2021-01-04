@@ -20,9 +20,12 @@ router.post('/', (req, res, next) => {
 					userId = rows[0].user_id;
 					connection.query('INSERT INTO transactions (user_id, room_id) value (?, ?)', [userId, req.body.room_id])
 						.then((rows) => {
+							param = JSON.stringify(rows);
+							res.header('Content-Type', 'application/json; charset=utf-8');
+							res.send(param);
 							console.log(rows)
 						})
-						.then((res) => {
+						.then(() => {
 							connection.end();
 						})
 						.catch(err => {
@@ -31,18 +34,20 @@ router.post('/', (req, res, next) => {
 						})
 				})
 				.then((res) => {
+					res.header('Content-Type', 'application/json; charset=utf-8');
+					res.send();
 					connection.end();
 				})
 				.catch(err => {
 					//handle error
 					console.log(err);
+					res.header('Content-Type', 'application/json; charset=utf-8');
 					connection.end();
 				})
 		}).catch(err => {
 			//not connected
 			console.log(err);
 		});
-	res.header('Content-Type', 'application/json; charset=utf-8');
 });
 
 module.exports = router;
