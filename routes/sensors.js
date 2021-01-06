@@ -24,19 +24,14 @@ router.post('/', (req, res, next) => {
 							res.header('Content-Type', 'application/json; charset=utf-8');
 							res.send(param);
 							console.log(rows)
-						})
-						.then(() => {
 							connection.end();
 						})
 						.catch(err => {
 							//handle error
 							console.log(err);
+							res.header('Content-Type', 'application/json; charset=utf-8');
+							connection.end();
 						})
-				})
-				.then((res) => {
-					res.header('Content-Type', 'application/json; charset=utf-8');
-					res.send();
-					connection.end();
 				})
 				.catch(err => {
 					//handle error
@@ -47,6 +42,8 @@ router.post('/', (req, res, next) => {
 		}).catch(err => {
 			//not connected
 			console.log(err);
+			res.header('Content-Type', 'application/json; charset=utf-8');
+			connection.end();
 		});
 });
 

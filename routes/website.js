@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 	let param;
 	pool.getConnection()
 		.then(connection => {
-			connection.query('SELECT MAX(created_at) as created_at, user_id, room_id, room_name, address FROM transactions NATURAL JOIN rooms GROUP BY user_id')
+			connection.query('SELECT MAX(created_at) as created_at, user_id, room_id, user_name, room_name, address FROM transactions NATURAL JOIN users NATURAL JOIN rooms GROUP BY user_id')
 				.then((rows) => {
 					param = JSON.stringify(rows);
 					res.header('Content-Type', 'application/json; charset=utf-8');
