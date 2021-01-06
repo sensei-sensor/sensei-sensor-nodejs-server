@@ -20,3 +20,17 @@ Content-Type: application/json
 	"name":"四国銀行",
 	"address":"徳島県"
 }
+
+###
+
+POST http://localhost:3000/sensors/
+Content-Type: application/json
+
+{
+	"room_id":1,
+	"mac_address":"f5:da:c4:74:92:65"
+}
+
+###
+
+http://localhost:3000/website/

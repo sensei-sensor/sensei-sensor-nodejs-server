@@ -5,10 +5,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');    // requireで、使用するミドルウェアをセット。
 const usersRouter = require('./routes/users');
 const samples = require('./routes/samples');
+const sensors = require('./routes/sensors');
+const website = require('./routes/website');
 
 const app = express();                            // Expressのサーバ生成処理を app にセット。
 
@@ -22,9 +25,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors());
+
 app.use('/', indexRouter);                        // ルーティング（後述）の設定。
 app.use('/users', usersRouter);
 app.use('/samples', samples);
+app.use('/sensors', sensors);
+app.use('/website', website);
 
 // catch 404 and forward to error handler         // ルーティングで該当先が無かったら、404画面を表示するミドルウェア。
 app.use((req, res, next) => {
