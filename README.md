@@ -56,24 +56,14 @@ Sensei Sensor のサーバー
 
 ## 初期設定
 
-1. プロキシの設定
-
-- ブラウザを使う用
-
-  設定 →
-
-- apt とかのプロキシ
-
-  [Proxy-Switcher-for-Ubuntu](https://github.com/nemuki-nok/Proxy-Switcher-for-Ubuntu)を使う
-
-2. アップデート
+### 1. アップデート
 
 ```
 $ sudo apt update
 $ sudo apt upgrade
 ```
 
-3. Node.js のインストール
+### 2. Node.js のインストール
 
 [参考サイト](https://qiita.com/seibe/items/36cef7df85fe2cefa3ea)
 
@@ -84,3 +74,30 @@ $ sudo n stable
 $ sudo apt purge -y nodejs npm
 $ exec $SHELL -l
 ```
+
+### 使い方
+
+0. `MariaDB` と `Node.js` と `npm` をインストールする。
+
+1. 
+
+2. `git clone https://github.com/sensei-sensor/sensei-sensor-server`
+
+3. `cd sensei-sensor-server`
+
+4. `production-config.js` を作成する。
+
+```JavaScript
+module.exports = {
+	// データベース接続情報
+	db: {
+		host: 'Your host name',
+		user: 'Your DB user name',
+		password: 'Your DB password'
+	}
+};
+```
+
+4. `npm install`
+
+5. `npm start`

@@ -1,28 +1,6 @@
 # VSCodeのRest Clientのリクエスト用
 # ### で区切れば複数の記述ができるようになる
 
-# sample 1
-http://localhost:3000/samples/
-
-### 
-
-# sample 3
-http://localhost:3000/samples/hello/徳島?shop=徳島ラーメン 東大
-
-###
-
-# sample 4
-# POSTメソッドはURLの先頭にPOST、Content-Typeの指定、1行開けてheaderの入力
-POST http://localhost:3000/samples/
-Content-Type: application/json
-
-{
-	"name":"四国銀行",
-	"address":"徳島県"
-}
-
-###
-
 POST http://localhost:3000/sensors/
 Content-Type: application/json
 
