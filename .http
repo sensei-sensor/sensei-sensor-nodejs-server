@@ -10,5 +10,7 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:3000/website
 
-http://localhost:3000/website/
+###
+PUT http://localhost:3000/website/1/0
