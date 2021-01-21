@@ -12,5 +12,8 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/website
 
-###
+### 公開
 PUT http://localhost:3000/website/1/0
+
+### 非公開
+PUT http://localhost:3000/website/1/1
