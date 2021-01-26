@@ -18,14 +18,12 @@ router.post('/', (req, res, next) => {
 			connection.query('SELECT user_id FROM tags WHERE mac_address = ?', [req.body.mac_address])
 				.then((rows) => {
 					if (rows[0] != undefined) {
-						console.log(rows[0])
 						userId = rows[0].user_id;
 						connection.query('INSERT INTO transactions (user_id, room_id) value (?, ?)', [userId, req.body.room_id])
 							.then((rows) => {
 								param = JSON.stringify(rows);
 								res.header('Content-Type', 'application/json; charset=utf-8');
 								res.send(param);
-								console.log(rows)
 								connection.end();
 							})
 							.catch(err => {
