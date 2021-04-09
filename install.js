@@ -1,4 +1,4 @@
-const productionConfig = require('./production-config');
+const productionConfig = require('./.env');
 
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
@@ -25,14 +25,14 @@ pool.getConnection()
 			.catch((err) => {
 				console.log(err);
 			})
-		connection.query('create table transactions (transaction_id int primary key auto_increment, user_id int, room_id int, created_at timestamp default current_timestamp);')
+		connection.query('create table transactions (transaction_id int primary key auto_increment, user_id int, room_id int, created_at timestamp default current_timestamp)')
 			.then((rows) => {
 				console.log(rows);
 			})
 			.catch((err) => {
 				console.log(err);
 			})
-		connection.query('create table tags (mac_address varchar(20) primary key, user_id int, description varchar(40));')
+		connection.query('create table tags (mac_address varchar(20) primary key, user_id int, description varchar(40))')
 			.then((rows) => {
 				console.log(rows);
 			})

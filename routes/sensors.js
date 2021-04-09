@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const productionConfig = require('../production-config');
+require('dotenv').config();
 
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-	host: productionConfig.db.host,
-	user: productionConfig.db.user,
-	password: productionConfig.db.password,
+	host: DB_HOST,
+	user: DB_USER,
+	password: DB_PASSWORD,
 	database: 'sensei_sensor',
 	connectionLimit: 5
 });
