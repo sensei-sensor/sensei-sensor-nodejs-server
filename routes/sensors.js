@@ -4,9 +4,9 @@ require('dotenv').config();
 
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-	host: DB_HOST,
-	user: DB_USER,
-	password: DB_PASSWORD,
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
 	database: 'sensei_sensor',
 	connectionLimit: 5
 });

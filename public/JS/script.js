@@ -3,7 +3,7 @@
 window.onload = get();
 
 function get() {
-  let serverURL = 'http://172.31.50.20:3000/website'
+  let serverURL =  ''
   $.ajax({
     url: serverURL,
     dataType: 'JSON',

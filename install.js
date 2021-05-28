@@ -2,9 +2,9 @@ const productionConfig = require('./.env');
 
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-	host: productionConfig.db.host,
-	user: productionConfig.db.user,
-	password: productionConfig.db.password,
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
 	database: 'sensei_sensor',
 	connectionLimit: 5
 });
