@@ -16,9 +16,21 @@
     <div class="title_name">Sensei Sensor</div>
 </header>
 <div class="main">
+    <div class="card">
+        <div class="user_name">' + res[key].user_name + '</div>
+        <div class="information">
+            <div class="low">
+                <div class="description">現在地:</div>
+                <div id="address" class="data">' + room_name + '</div>
+            </div>
+            <div class="low">
+                <div class="description">更新時刻:</div>
+                <div id="created_at" class="data">' + createdAt + '</div>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="./JS/jquery-3.5.1.min.js"></script>
-<script src="./JS/script.js"></script>
 </body>
 
 </html>

@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));                           // 先頭で定義したNode.jsパッケージのインスタンスを使って、各種処理を設定。
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,25 +28,25 @@ app.use('/sensors', sensors);
 app.use('/website', website);
 
 app.get('/index', (req, res) => {
-	res.render('index.ejs');
+    res.render('index.ejs');
 })
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // catch 404 and forward to error handler         // ルーティングで該当先が無かったら、404画面を表示するミドルウェア。
 app.use((req, res, next) => {
-	next(createError(404));
+    next(createError(404));
 });
 
 // error handler                                  // エラーが発生したら、500画面を表示するミドルウェア。
 app.use((err, req, res, next) => {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-	// render the error page
-	res.status(err.status || 500);
-	res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
