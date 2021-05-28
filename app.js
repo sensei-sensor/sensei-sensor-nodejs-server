@@ -14,7 +14,7 @@ const app = express();                            // Expressのサーバ生成�
 
 // view engine setup                              // HTMLテンプレートエンジンのセット。
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));                           // 先頭で定義したNode.jsパッケージのインスタンスを使って、各種処理を設定。
 app.use(express.json());
@@ -26,6 +26,10 @@ app.use(cors());
 
 app.use('/sensors', sensors);
 app.use('/website', website);
+
+app.get('/index', (req, res) => {
+	res.render('index.ejs');
+})
 
 app.use(express.static(path.join(__dirname, 'public')));
 
