@@ -1,4 +1,4 @@
-# Sensei Sensor Server
+# Sensei Sensor Server (Node.js)
 
 Sensei Sensor のサーバー
 
